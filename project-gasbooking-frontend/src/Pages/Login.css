@@ -1,0 +1,159 @@
+#login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 1rem;
+  }
+  
+  #login .form {
+    margin-top: 50px;
+    width: 35vw;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  #login .form .line1 {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #login .form .line1 img {
+    width: 2rem;
+  }
+  
+  #login .form h3 {
+    font-weight: bold;
+  }
+  
+  #login .form h6 {
+    color: teal;
+  }
+  
+  .input {
+    margin-top: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+  }
+  .input input {
+    border: 2px solid rgb(167, 160, 160);
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+  }
+  
+  .input .passline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .input .passline h6:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  #login-btn {
+    margin-top: 10px;
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .input label {
+    font-weight: bold;
+  }
+  
+  .form p {
+    color: teal;
+  }
+  .form span {
+    color: #000;
+    cursor: pointer;
+  }
+  .form span:hover {
+    text-decoration: underline;
+  }
+  
+  .fuel {
+    display: flex;
+  }
+  
+  .fuel input {
+    border-radius: 5px 0px 0px 5px;
+  }
+  
+  .fuel button {
+    padding: 20px;
+    height: 50px;
+    border-radius: 0px 5px 5px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #login #provider-form {
+    margin-top: 300px;
+  }
+  
+  /* Responsive Design */
+  
+  /* Tablets (768px and below) */
+  @media screen and (max-width: 768px) {
+    #login .form {
+      width: 70vw;
+    }
+  
+    #login .form .line1 img {
+      margin-left: 0;
+    }
+  
+    .input {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  }
+  
+  /* Phones (480px and below) */
+  @media screen and (max-width: 480px) {
+    #login {
+      padding: 0.5rem;
+    }
+  
+    #login .form {
+      width: 90vw;
+    }
+  
+    #login .form .line1 {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+  
+    .input {
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  
+    .input .passline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }
+  

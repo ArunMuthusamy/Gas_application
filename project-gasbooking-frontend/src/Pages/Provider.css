@@ -1,0 +1,156 @@
+#provider {
+    width: 100%;
+    padding-top: 10vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.header h2 {
+    font-weight: bold;
+}
+
+.header h6 {
+    color: teal;
+}
+
+.filter {
+    display: flex;
+    gap: 20px;
+}
+
+.filter input {
+    border: 0.5px solid teal;
+    width: 15vw;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.filter select {
+    border: 0.5px solid teal;
+    width: 15vw;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.card-collection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.card {
+    padding: 20px;
+}
+
+.card p {
+    color: teal;
+    font-size: medium;
+    margin-bottom: 5px;
+}
+
+.card .rat-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.card .type {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.card .type div {
+    border: 0.5px solid teal;
+    border-radius: 10px;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: small;
+    margin-bottom: 15px;
+}
+
+.card .slot-book {
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .card-collection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .filter input,
+    .filter select {
+        width: 25vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .filter {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filter input,
+    .filter select {
+        width: 100%;
+    }
+
+    .card-collection {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #provider {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+
+    .card .type {
+        flex-wrap: wrap;
+    }
+
+    .card .type div {
+        font-size: x-small;
+        padding: 2px 8px;
+    }
+
+    .card .slot-book {
+        width: 100%;
+        padding: 8px;
+    }
+}

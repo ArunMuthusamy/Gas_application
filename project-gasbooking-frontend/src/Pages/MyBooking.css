@@ -1,0 +1,194 @@
+#booking {
+    width: 100vw;
+    height: 100vh;
+    padding: 5vw;
+}
+
+#booking .box {
+    display: flex;
+    padding: 10px;
+    background-color: rgb(211, 218, 218);
+    width: 250px;
+    padding: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#booking .box .box1 {
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+#booking .box .box2 {
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.bar-collection {
+    border: 2px solid teal;
+    padding: 5px;
+    height: 90%;
+    max-height: 90%;
+    /* Set a max-height */
+    overflow-y: auto;
+}
+
+.bar-collection .bar {
+    width: 100%;
+    border: 1px solid rgb(180, 182, 182);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.bar-collection .bar h2 {
+    font-weight: bold;
+}
+
+.bar-collection .bar p {
+    color: teal;
+}
+
+.bar-collection .bar .rat-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.booking-btn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.details {
+    width: auto;
+    padding: 10px;
+    border: 0.5px solid rgb(136, 139, 139);
+    background-color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: 500;
+}
+
+.booking-btn .cancel {
+    width: auto;
+    padding: 10px;
+    border: 0.5px solid rgb(136, 139, 139);
+    background-color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: red;
+    font-weight: 500;
+}
+
+.add_details {
+    padding: 5px 10px 5px 10px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.type {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.type div {
+    border: 0.5px solid teal;
+    border-radius: 10px;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: small;
+    margin-bottom: 15px;
+}
+
+.bar .bar-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box1.active,
+.box2.active {
+    color: black;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+/* Tablet (768px and down) */
+@media screen and (max-width: 768px) {
+    #booking {
+        padding: 3vw;
+    }
+
+    #booking .box {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .bar-collection .bar {
+        padding: 15px;
+    }
+
+    .bar-collection .bar .rat-price {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .booking-btn {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .details,
+    .booking-btn .cancel {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* Mobile (480px and down) */
+@media screen and (max-width: 480px) {
+    #booking h1 {
+        font-size: 1.5rem;
+    }
+
+    #booking h5 {
+        font-size: 1rem;
+    }
+
+    .bar-collection .bar h2 {
+        font-size: 1.2rem;
+    }
+
+    .rat-price h6 {
+        font-size: 0.9rem;
+    }
+
+    .bar .bar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .type div {
+        font-size: 0.75rem;
+    }
+
+    .details,
+    .booking-btn .cancel,
+    .add_details {
+        font-size: 0.9rem;
+        padding: 10px;
+        width: 100%;
+    }
+}

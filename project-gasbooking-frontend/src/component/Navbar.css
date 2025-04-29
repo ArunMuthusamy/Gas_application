@@ -1,0 +1,81 @@
+/* Navbar.css */
+
+#navbar {
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    /* vertical centering */
+    justify-content: space-between;
+    height: 70px;
+    /* or your desired height */
+    padding: 0 1rem;
+    background: #fff;
+    color: #222;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+    margin-bottom: 20px;
+    z-index: 1000;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    /* center icon & text together */
+    gap: 1.5rem;
+    /* spacing between icon and title */
+}
+.icons img{
+    width: 60px;
+}
+
+/* .gas-icon {
+    font-size: 2.5rem;
+} */
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;/* spacing between links */
+
+}
+
+.links a {
+    text-decoration: none;  /* no underline */
+    color: inherit;         /* inherit navbar color */
+    font-size: large;
+    font-weight:500;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;        
+  }
+
+@media only screen and (max-width: 768px){
+    .icons img{
+        width: 40px;
+    }
+    .icons{
+        gap: 0.5rem;
+    }
+    .icons h1{
+        font-size: x-large;
+    }
+
+    .links{
+        gap: 1rem;
+    }
+    .links a{
+        font-size: medium;
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .links{
+        gap:0.5rem
+    }
+    .links a{
+        font-size: small;
+    }
+}
+

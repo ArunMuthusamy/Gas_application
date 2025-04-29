@@ -1,0 +1,78 @@
+#slots {
+    width: 100vw;
+    height: 100vh;
+    padding: 5vw;
+}
+#slots h1 {
+    margin-top: 50px;
+    font-weight: bold;
+}
+#slots p {
+    color: teal;
+}
+#slots .box {
+    width: 30vw;
+    background-color: rgb(223, 223, 223);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px 15px 5px 15px;
+    gap: 10px; /* Add some gap between day boxes */
+}
+#slots .box1,
+.box2,
+.box3 {
+    background-color: rgb(223, 223, 223);
+    padding: 5px 25px 5px 25px;
+    cursor: pointer; /* show pointer on hover */
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* 👉 this is important */
+#slots .activ {
+    background-color:#fff;
+   
+}
+
+.slot-time {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 50px 0px;
+    gap: 20px;
+}
+.slot-time div {
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.bookSlot {
+    margin-left: 75vw;
+    padding: 10px 20px 10px 20px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+#slots .active {
+    background-color: #000; /* Blue background */
+    color: white;              /* White text */
+    border: 2px solid #000;  /* Darker blue border */
+}
+
+.description{
+    width: 100%;
+    border:1px solid #000;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+.rat-price{
+    display: flex;
+    justify-content: space-between;
+}
