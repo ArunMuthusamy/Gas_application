@@ -17,7 +17,7 @@ const MyBooking = () => {
         return;
       }
       try {
-        const res = await axios.get("http://localhost:3003/bookingdetails", {
+        const res = await axios.get("https://gas-application-1.onrender.com/booking/bookingdetails", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ const MyBooking = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.delete(
-        `http://localhost:3003/bookingCancel/${id}`,
+        `hhttps://gas-application-1.onrender.com/booking/bookingCancel/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const MyBooking = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `http://localhost:3003/updateStatus/${id}`,
+        `https://gas-application-1.onrender.com/booking/updateStatus/${id}`,
         { status: true },
         {
           headers: {

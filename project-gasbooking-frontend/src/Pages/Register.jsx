@@ -18,7 +18,7 @@ const Register = () => {
       confirmpass: confirmPassword,
     };
     try {
-      const res=await axios.post("http://localhost:3003/register",userData);
+      const res=await axios.post("https://gas-application-1.onrender.com/user/register",userData);
       console.log(res);
       alert(res.data.Message);
       if(res.status===200){

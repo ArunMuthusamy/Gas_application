@@ -15,7 +15,7 @@ const Login = () => {
       pass: password,
     };
     try {
-      const res = await axios.post("http://localhost:3003/user/login", credential);
+      const res = await axios.post("https://gas-application-1.onrender.com/user/login", credential);
       console.log(res);
       console.log(res.data.Message)
       alert(res.data.Message);

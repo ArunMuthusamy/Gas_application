@@ -35,7 +35,7 @@ const BookingSlots = () => {
     };
     try {
       const res = await axios.post(
-        "http://localhost:3003/booking-post",
+        "https://gas-application-1.onrender.com/booking/booking-post",
         bookingDetails,
         {
           headers: {

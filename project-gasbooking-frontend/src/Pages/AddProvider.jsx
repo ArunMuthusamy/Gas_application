@@ -27,7 +27,7 @@ const AddProvider = () => {
     };
     try {
       const res = await axios.post(
-        "http://localhost:3003/provide-post",
+        "https://gas-application-1.onrender.com/provider/provide-post",
         providerData,
         {
           headers: {

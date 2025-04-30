@@ -21,7 +21,7 @@ const Provider = () => {
       }
 
       try {
-        const res = await axios.get("http://localhost:3003/providers", {
+        const res = await axios.get("https://gas-application-1.onrender.com/provider/providers-get", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

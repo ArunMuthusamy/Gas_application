@@ -37,7 +37,7 @@ ProviderRouter.post("/provide-post", auth, async (req, res) => {
   }
 });
 
-ProviderRouter.get("/providers", auth, async (req, res) => {
+ProviderRouter.get("/providers-get", auth, async (req, res) => {
   try {
     const providers = await ProviderModel.find();
 
