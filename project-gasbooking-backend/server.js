@@ -11,13 +11,13 @@ const PORT = process.env.PORT || 3000;
 const server = express();
 server.use(cors());
 server.use(express.json());
-server.use("/",UserRouter);
-server.use("/",ProviderRouter);
-server.use("/",BookingRouter)
+server.use("/user", UserRouter);
+server.use("/provider", ProviderRouter);
+server.use("/booking", BookingRouter);
 
-server.get("/",(req,res)=>{
-  res.json(200).json({Message:"Your Server is working fine"});
-})
+server.get("/", (req, res) => {
+  res.status(200).json({ Message: "Your Server is working fine" });
+});
 server.listen(PORT, async () => {
   try {
     await connection;

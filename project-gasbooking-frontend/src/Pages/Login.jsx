@@ -15,7 +15,7 @@ const Login = () => {
       pass: password,
     };
     try {
-      const res = await axios.post("http://localhost:3003/login", credential);
+      const res = await axios.post("http://localhost:3003/user/login", credential);
       console.log(res);
       console.log(res.data.Message)
       alert(res.data.Message);
