@@ -1,8 +1,9 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import "./Provider.css";
 import { IoLocationOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Provider = () => {
   const [provider, setProvider] = useState([]);
@@ -15,22 +16,28 @@ const Provider = () => {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        alert("No token found, Please login first");
+        toast.error("No token found, please login first");
         console.error("No token found");
         return;
       }
 
       try {
-        const res = await axios.get("https://gas-application-1.onrender.com/provider/providers-get", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await axios.get(
+          "https://gas-application-1.onrender.com/provider/providers-get",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         console.log(res.data.Providers);
-        setProvider(res.data.Providers);
+        setProvider(res.data.Providers || []);
       } catch (error) {
-        console.log("Error fetching providers:", error);
+        console.error("Error fetching providers:", error);
+        toast.error(
+          error.response?.data?.message || "Error fetching providers"
+        );
       }
     };
 

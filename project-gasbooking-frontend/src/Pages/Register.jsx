@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import "./Login.css";
-import axios from "axios"
+import axios from "axios";
 import gas from "../assets/gas-cylinder.png";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate=useNavigate();
-  const handleSubmit=async (e)=>{
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = {
       name,
@@ -17,24 +20,31 @@ const Register = () => {
       pass: password,
       confirmpass: confirmPassword,
     };
+
     try {
-      const res=await axios.post("https://gas-application-1.onrender.com/user/register",userData);
+      const res = await axios.post(
+        "https://gas-application-1.onrender.com/user/register",
+        userData
+      );
       console.log(res);
-      alert(res.data.Message);
-      if(res.status===200){
+      toast.success(res.data.Message || "Registration successful!");
+      if (res.status === 200) {
         navigate("/login");
       }
     } catch (error) {
-      console.log("Error registering user: ",error);
-      alert("Error registering user, please try again.")
+      console.error("Error registering user: ", error);
+      toast.error(
+        error.response?.data?.Message ||
+          "Error registering user, please try again."
+      );
     }
+  };
 
-  }
   return (
     <div id="login">
       <div className="form">
         <div className="line1">
-          <img src={gas} alt="" />
+          <img src={gas} alt="gas-cylinder" />
           <h5>GasBooker</h5>
         </div>
         <h3>Create an account</h3>
@@ -58,10 +68,10 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className="passline">
-            <label htmlFor="">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
           <input
-            type="text"
+            type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -70,12 +80,14 @@ const Register = () => {
             <label htmlFor="confirmPassword">Confirm Password</label>
           </div>
           <input
-            type="text"
+            type="password"
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button id="login-btn" type="submit">Register</button>
+          <button id="login-btn" type="submit">
+            Register
+          </button>
         </form>
 
         <p>

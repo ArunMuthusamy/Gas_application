@@ -5,7 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import { LuCalendar } from "react-icons/lu";
 import { RiContactsLine } from "react-icons/ri";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
   const [provider, setProvider] = useState([]);
@@ -30,9 +30,9 @@ const Landing = () => {
           },
         });
         setProvider(res.data.Providers || []);
+        console.log(provider);
       } catch (error) {
         console.error("Error fetching providers:", error);
-        navigate("/login");
       }
     };
 
@@ -49,9 +49,11 @@ const Landing = () => {
       return;
     }
     const filtered = provider.filter((p) =>
-      p.address.toLowerCase().includes(searchLocation.toLowerCase())
+      p.state.toLowerCase().includes(searchLocation.toLowerCase())
     );
     setFilteredProviders(filtered);
+    console.log("i am clicked")
+    console.log(filteredProviders);
   };
 
   return (
@@ -72,7 +74,7 @@ const Landing = () => {
               placeholder="Search by location..."
               value={searchLocation}
               onChange={(e) => {
-                setSearchLocation(e.target.value), handleSearch;
+                setSearchLocation(e.target.value);
               }}
               style={{ width: "25rem" }}
             />

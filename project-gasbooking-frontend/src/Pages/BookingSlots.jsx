@@ -4,6 +4,7 @@ import "./BookingSlots.css";
 import axios from "axios";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const BookingSlots = () => {
   const location = useLocation();
@@ -45,15 +46,16 @@ const BookingSlots = () => {
         }
       );
       console.log(res);
-      alert(res.data.Message);
-      if (res.status == 200) {
+      toast.success(res.data.Message || "Booking successful!"); // ✅ toast added
+      if (res.status === 200) {
         navigate("/mybooking");
       }
     } catch (error) {
       console.log(error);
-      alert(error.message);
+      toast.error(error.response?.data?.Message || "Booking failed!"); // ✅ toast added
     }
   };
+  
 
   return (
     <div id="slots">

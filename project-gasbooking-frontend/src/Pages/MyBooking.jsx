@@ -2,31 +2,37 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MyBooking.css";
 import { IoLocationOutline } from "react-icons/io5";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";  // Import toast
+
 const MyBooking = () => {
   const [booking, setBooking] = useState([]);
   const [selectedTab, setSelectedTab] = useState("upcoming");
 
   const navigate = useNavigate();
+
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
-        alert("No token found, Please login first");
+        toast.error("No token found, Please login first"); // Replaced alert
         console.error("No token found");
         return;
       }
       try {
-        const res = await axios.get("https://gas-application-1.onrender.com/booking/bookingdetails", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await axios.get(
+          "https://gas-application-1.onrender.com/booking/bookingdetails",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         console.log(res.data.BookingList);
         setBooking(res.data.BookingList);
       } catch (error) {
-        console.log("Error fetching bookings:", error);
+        toast.error("Error fetching bookings: " + error.message); // Replaced alert
       }
     };
     fetchData();
@@ -36,7 +42,7 @@ const MyBooking = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.delete(
-        `hhttps://gas-application-1.onrender.com/booking/bookingCancel/${id}`,
+        `https://gas-application-1.onrender.com/booking/bookingCancel/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -44,14 +50,12 @@ const MyBooking = () => {
           },
         }
       );
-      console.log(res.data.message);
-      alert(res.data.Message);
-      if (res.status == 200) {
+      toast.success(res.data.Message); // Replaced alert
+      if (res.status === 200) {
         window.location.reload();
       }
     } catch (error) {
-      console.log(error.message);
-      alert(error.message);
+      toast.error("Error canceling booking: " + error.message); // Replaced alert
     }
   };
 
@@ -69,12 +73,12 @@ const MyBooking = () => {
         }
       );
       if (res.status === 200) {
-        alert("Status updated to completed");
+        toast.success("Status updated to completed"); // Replaced alert
         window.location.reload();
       }
     } catch (err) {
       console.error("Error updating status:", err.message);
-      alert("Error updating status");
+      toast.error("Error updating status: " + err.message); // Replaced alert
     }
   };
 
@@ -98,7 +102,7 @@ const MyBooking = () => {
       </div>
 
       {booking.length <= 0 ? (
-        <h1>Booking not found...</h1>
+        <h1>No bookings found...</h1> // No need to use toast here as it's not an error
       ) : (
         <div className="bar-collection">
           {booking
@@ -113,7 +117,7 @@ const MyBooking = () => {
                   <h2>{data.name}</h2>
                   {data.status == "true" ? (
                     <button id="status" className="details">
-                      Compeleted
+                      Completed
                     </button>
                   ) : (
                     <button
@@ -140,7 +144,6 @@ const MyBooking = () => {
                     onClick={() =>
                       navigate("/bookingDetails", { state: { booking: data } })
                     }
-                    f
                   >
                     View Details
                   </button>

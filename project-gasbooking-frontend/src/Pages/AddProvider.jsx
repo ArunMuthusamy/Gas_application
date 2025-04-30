@@ -3,6 +3,8 @@ import "./Login.css";
 import axios from "axios";
 import gas from "../assets/gas-cylinder.png";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast"; // Importing react-hot-toast
+
 const AddProvider = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -14,6 +16,7 @@ const AddProvider = () => {
   const [type, setType] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const providerData = {
@@ -37,15 +40,16 @@ const AddProvider = () => {
         }
       );
       console.log(res);
-      alert(res.data.message);
+      toast.success(res.data.message); // Using toast for success message
       if (res.status === 200) {
         navigate("/provider");
       }
     } catch (error) {
-      console.log("Error registering user: ", error);
-      alert("Error registering user, please try again.");
+      console.log("Error registering provider: ", error);
+      toast.error("Error registering provider, please try again."); // Using toast for error message
     }
   };
+
   return (
     <div id="login">
       <div className="form" id="provider-form">
@@ -56,7 +60,7 @@ const AddProvider = () => {
         <h3>Add Provider</h3>
         <h6>Enter your details of Provider</h6>
 
-        <form className="input">
+        <form className="input" onSubmit={handleSubmit}> {/* Using onSubmit for form submission */}
           <label htmlFor="name">Full Name</label> <br />
           <input
             type="text"
@@ -74,7 +78,7 @@ const AddProvider = () => {
             onChange={(e) => setAddress(e.target.value)}
           />
           <div className="passline">
-            <label htmlFor="">Rating</label>
+            <label htmlFor="rating">Rating</label>
           </div>
           <input
             type="text"
@@ -84,7 +88,7 @@ const AddProvider = () => {
             onChange={(e) => setRating(e.target.value)}
           />
           <div className="passline">
-            <label htmlFor="confirmPassword">Price</label>
+            <label htmlFor="price">Price</label>
           </div>
           <input
             type="text"
@@ -96,7 +100,7 @@ const AddProvider = () => {
           <label htmlFor="Available">Available</label> <br />
           <input
             type="text"
-            placeholder="Today,Tommorrow..."
+            placeholder="Today, Tomorrow..."
             id="available"
             value={available}
             onChange={(e) => setAvailable(e.target.value)}
@@ -128,7 +132,7 @@ const AddProvider = () => {
               Add
             </button>
           </div>
-          <button id="login-btn" onClick={handleSubmit}>
+          <button id="login-btn" type="submit"> {/* Changed to type="submit" */}
             Add Provider
           </button>
         </form>

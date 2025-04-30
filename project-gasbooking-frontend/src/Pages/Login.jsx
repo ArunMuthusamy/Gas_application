@@ -3,10 +3,12 @@ import "./Login.css";
 import gas from "../assets/gas-cylinder.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast"; // ✅ Import toast
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const Navigate=useNavigate();
+  const Navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,20 +18,19 @@ const Login = () => {
     };
     try {
       const res = await axios.post("https://gas-application-1.onrender.com/user/login", credential);
-      console.log(res);
-      console.log(res.data.Message)
-      alert(res.data.Message);
-      if(res.status==200){
+      toast.success(res.data.Message); // ✅ Show success toast
+
+      if (res.status === 200) {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("login", true);
         Navigate("/");
       }
-
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("login",true);
     } catch (error) {
-      console.log("Error registering user: ", error);
-      alert(error.message);
+      console.log("Error logging in: ", error);
+      toast.error(error.response?.data?.Message || "Login failed"); // ✅ Show error toast
     }
   };
+
   return (
     <div id="login">
       <div className="form">
@@ -54,7 +55,7 @@ const Login = () => {
             <h6>Forgot password?</h6>
           </div>
           <input
-            type="text"
+            type="password" // ✅ Better UX than text
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -65,7 +66,8 @@ const Login = () => {
         </form>
 
         <p>
-          Don't have an account? <span onClick={()=>Navigate("/register")}>Register</span>
+          Don't have an account?{" "}
+          <span onClick={() => Navigate("/register")}>Register</span>
         </p>
       </div>
     </div>
